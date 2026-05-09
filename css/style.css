@@ -110,3 +110,20 @@ p { color: var(--text-secondary); }
 @media (max-width:768px){
   .content-section { padding: 68px 0; }
 }
+
+/* Academic structure + premium theme consistency */
+body.light-mode, html[data-theme="light"] body { background:#ffffff; color:#0f172a; }
+body.dark-mode, html[data-theme="dark"] body { background:#0f0f10; color:#e5e7eb; }
+.site-header { background: color-mix(in srgb, var(--bg-secondary) 72%, transparent); border-bottom:1px solid var(--border); }
+.section-divider { border-top: 1px solid var(--border); margin-top: 24px; }
+.content-section + .content-section { border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent); }
+
+.project-card p { line-height: 1.75; }
+.skill-group h3, .project-card h3 { letter-spacing:.2px; }
+
+#main-nav a { transition: color .3s ease, opacity .3s ease; }
+#main-nav a:not(.active) { opacity:.88; }
+#main-nav a.active { opacity:1; }
+
+.contact-link { border:1px solid var(--border); background:var(--card-bg); }
+.contact-link:hover { transform: translateY(-2px); }
