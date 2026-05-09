@@ -2,6 +2,7 @@
 const themeToggle = document.getElementById('theme-toggle');
 const menuToggle = document.getElementById('menu-toggle');
 const nav = document.getElementById('main-nav');
+const mobileNav = document.getElementById('mobile-nav');
 const sunIcon = document.querySelector('.sun-icon');
 const moonIcon = document.querySelector('.moon-icon');
 const typedTextElement = document.getElementById('typed-text');
@@ -60,28 +61,28 @@ function initTheme() {
 }
 
 function initMenu() {
-  if (!menuToggle || !nav) return;
+  if (!menuToggle || !mobileNav) return;
   menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     menuToggle.classList.toggle('active');
-    nav.classList.toggle('active');
+    mobileNav.classList.toggle('hidden');
   });
-  nav.querySelectorAll('a').forEach((link) => {
+  mobileNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       menuToggle.classList.remove('active');
-      nav.classList.remove('active');
+      mobileNav.classList.add('hidden');
     });
   });
   document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
+    if (!mobileNav.contains(e.target) && !menuToggle.contains(e.target) && !mobileNav.classList.contains('hidden')) {
       menuToggle.classList.remove('active');
-      nav.classList.remove('active');
+      mobileNav.classList.add('hidden');
     }
   });
 }
 
 function initSmoothScroll() {
-  document.querySelectorAll('#main-nav a[href^="#"]').forEach((anchor) => {
+  document.querySelectorAll('#main-nav a[href^="#"], #mobile-nav a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');
       const target = targetId ? document.querySelector(targetId) : null;
@@ -112,7 +113,7 @@ function initScrollEffects() {
 }
 
 function initScrollSpy() {
-  const links = Array.from(document.querySelectorAll('#main-nav a[href^="#"]'));
+  const links = Array.from(document.querySelectorAll('#main-nav a[href^="#"], #mobile-nav a[href^="#"]'));
   const sections = links.map((l) => document.querySelector(l.getAttribute('href'))).filter(Boolean);
   if (!sections.length) return;
 
@@ -136,9 +137,9 @@ function initScrollSpy() {
 
 function initResizeClose() {
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && nav?.classList.contains('active')) {
+    if (window.innerWidth >= 768) {
       menuToggle?.classList.remove('active');
-      nav.classList.remove('active');
+      mobileNav?.classList.add('hidden');
     }
   });
 }

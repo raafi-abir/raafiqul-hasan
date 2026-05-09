@@ -13,7 +13,7 @@
 </head>
 <body class="antialiased">
     <header class="site-header sticky top-0 w-full backdrop-blur-xl border-b" id="top">
-        <div class="header-inner max-w-6xl mx-auto px-6 py-4">
+        <div class="header-inner relative max-w-6xl mx-auto px-6 py-4">
             <div class="logo-area">
                 <h1>Raafiqul Hasan</h1>
                 <p class="subtitle">Electrical and Electronics Engineering Student</p>
@@ -23,12 +23,12 @@
                     <i class="fas fa-sun sun-icon"></i>
                     <i class="fas fa-moon moon-icon" style="display: none;"></i>
                 </button>
-                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                <button id="menu-toggle" class="menu-toggle md:hidden" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
-            <nav id="main-nav" class="transition-all duration-300">
-                <ul>
+            <nav id="main-nav" class="hidden md:block transition-all duration-300">
+                <ul class="hidden md:flex">
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#education">Education</a></li>
@@ -38,6 +38,17 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            <div id="mobile-nav" class="hidden md:hidden absolute right-4 top-full mt-2 w-[min(88vw,340px)] rounded-2xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl p-5">
+                <ul class="flex flex-col gap-4">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#lab-experience">Lab Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </header>
 
