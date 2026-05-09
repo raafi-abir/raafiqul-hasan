@@ -147,6 +147,7 @@ function initScrollSpy() {
     }, { threshold: [0.2, 0.4, 0.6], rootMargin: '-25% 0px -45% 0px' });
 
     sections.forEach(section => observer.observe(section));
+    activate(sections[0].id);
 }
 function initResizeClose() {
     window.addEventListener('resize', () => {
