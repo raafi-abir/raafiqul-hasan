@@ -6,44 +6,9 @@
     <title>Resume - Raafiqul Hasan</title>
     
     <!-- DARK MODE FIX -->
-    <script>
-        (function() {
-            try {
-                const savedTheme = localStorage.getItem('theme');
-                
-                if (savedTheme === 'dark') {
-                    document.documentElement.classList.add('dark-mode');
-                    document.documentElement.classList.remove('light-mode');
-                    document.body.classList.add('dark-mode');
-                    document.body.classList.remove('light-mode');
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                } else {
-                    document.documentElement.classList.add('light-mode');
-                    document.documentElement.classList.remove('dark-mode');
-                    document.body.classList.add('light-mode');
-                    document.body.classList.remove('dark-mode');
-                    document.documentElement.setAttribute('data-theme', 'light');
-                }
-            } catch (e) {
-                document.documentElement.classList.add('light-mode');
-                document.body.classList.add('light-mode');
-            }
-        })();
-    </script>
+    <script src="/js/theme-init.js"></script>
     
     <!-- Force theme immediately -->
-    <style>
-        html.dark-mode body,
-        html[data-theme="dark"] body {
-            background-color: #0f172a !important;
-            color: #f8fafc !important;
-        }
-        html.light-mode body,
-        html[data-theme="light"] body {
-            background-color: #f8fafc !important;
-            color: #0f172a !important;
-        }
-    </style>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -58,18 +23,18 @@
                     <p class="subtitle">Electrical and Electronics Engineering Student</p>
                 </div>
                 <div class="header-controls">
-                    <button id="theme-toggle" class="theme-toggle">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                         <i class="fas fa-sun sun-icon"></i>
                         <i class="fas fa-moon moon-icon" style="display: none;"></i>
                     </button>
-                    <button id="menu-toggle" class="menu-toggle">
+                    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
                         <span></span><span></span><span></span>
                     </button>
                 </div>
             </div>
             <nav id="main-nav">
                 <ul>
-                    <li><a href="/resume" class="active">Resume</a></li>
+                    <li><a href="/resume" class="active" aria-current="page">Resume</a></li>
                     <li><a href="/research">Research</a></li>
                     <li><a href="/projects">Projects</a></li>
                     <li><a href="/outreach">Outreach</a></li>
@@ -140,8 +105,8 @@
         <footer>
             <div class="contact-links">
                 <a href="mailto:raafiqulhasan756@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://github.com/StarX-404" target="_blank" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://www.linkedin.com/in/raafiqul-hasan" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/StarX-404" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/raafiqul-hasan" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
             <p>University of Asia Pacific, Dhaka</p>
             <p class="copyright">© 2024 by Raafiqul Hasan</p>
