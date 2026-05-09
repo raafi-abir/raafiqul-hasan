@@ -1,29 +1,18 @@
-// ============================================
-// MAIN.JS - COMPLETE WITH DARK MODE TOGGLE
-// ============================================
-
-// DOM Elements
+// Resolved: one-page interaction source of truth
 const themeToggle = document.getElementById('theme-toggle');
 const menuToggle = document.getElementById('menu-toggle');
 const nav = document.getElementById('main-nav');
+const mobileNav = document.getElementById('mobile-nav');
 const sunIcon = document.querySelector('.sun-icon');
 const moonIcon = document.querySelector('.moon-icon');
 const typedTextElement = document.getElementById('typed-text');
 const html = document.documentElement;
 const body = document.body;
+const header = document.querySelector('.site-header');
 
-// ============================================
-// TYPING EFFECT FOR TERMINAL
-// ============================================
 const skills = [
-    "Python (beginner)",
-    "C Programming (beginner)",
-    "Linux System Configuration",
-    "Circuit Analysis",
-    "Laplace Transform",
-    "Semiconductor Devices",
-    "Ohm's Law & KVL",
-    "Mathematical Modeling"
+  'Python (beginner)', 'C Programming (beginner)', 'Linux System Configuration',
+  'Circuit Analysis', 'Laplace Transform', 'Semiconductor Devices', "Ohm's Law & KVL", 'Mathematical Modeling'
 ];
 
 let currentSkillIndex = 0;
@@ -31,140 +20,134 @@ let currentCharIndex = 0;
 let isDeleting = false;
 
 function typeEffect() {
-    if (!typedTextElement) return;
-    
-    const currentSkill = skills[currentSkillIndex];
-    
-    if (isDeleting) {
-        typedTextElement.textContent = currentSkill.substring(0, currentCharIndex - 1);
-        currentCharIndex--;
-    } else {
-        typedTextElement.textContent = currentSkill.substring(0, currentCharIndex + 1);
-        currentCharIndex++;
-    }
+  if (!typedTextElement) return;
+  const currentSkill = skills[currentSkillIndex];
+  typedTextElement.textContent = isDeleting
+    ? currentSkill.substring(0, currentCharIndex - 1)
+    : currentSkill.substring(0, currentCharIndex + 1);
+  currentCharIndex += isDeleting ? -1 : 1;
 
-    if (!isDeleting && currentCharIndex === currentSkill.length) {
-        isDeleting = true;
-        setTimeout(typeEffect, 2000);
-    } else if (isDeleting && currentCharIndex === 0) {
-        isDeleting = false;
-        currentSkillIndex = (currentSkillIndex + 1) % skills.length;
-        setTimeout(typeEffect, 500);
-    } else {
-        const speed = isDeleting ? 50 : 100;
-        setTimeout(typeEffect, speed);
-    }
+  if (!isDeleting && currentCharIndex === currentSkill.length) {
+    isDeleting = true;
+    setTimeout(typeEffect, 1800);
+  } else if (isDeleting && currentCharIndex === 0) {
+    isDeleting = false;
+    currentSkillIndex = (currentSkillIndex + 1) % skills.length;
+    setTimeout(typeEffect, 450);
+  } else {
+    setTimeout(typeEffect, isDeleting ? 45 : 95);
+  }
 }
 
-// Start typing effect
-if (typedTextElement) {
-    setTimeout(typeEffect, 1000);
-}
-
-// ============================================
-// THEME TOGGLE FUNCTION
-// ============================================
 function setTheme(theme) {
-    if (theme === 'dark') {
-        // Set on html and body
-        html.classList.add('dark-mode');
-        html.classList.remove('light-mode');
-        body.classList.add('dark-mode');
-        body.classList.remove('light-mode');
-        html.setAttribute('data-theme', 'dark');
-        
-        // Update icons
-        if (sunIcon && moonIcon) {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-        }
-    } else {
-        // Set on html and body
-        html.classList.add('light-mode');
-        html.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-        body.classList.remove('dark-mode');
-        html.setAttribute('data-theme', 'light');
-        
-        // Update icons
-        if (sunIcon && moonIcon) {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-        }
+  html.classList.remove('dark-mode', 'light-mode');
+  body.classList.remove('dark-mode', 'light-mode');
+  html.classList.add(`${theme}-mode`);
+  body.classList.add(`${theme}-mode`);
+  html.setAttribute('data-theme', theme);
+  if (sunIcon && moonIcon) {
+    sunIcon.style.display = theme === 'dark' ? 'none' : 'block';
+    moonIcon.style.display = theme === 'dark' ? 'block' : 'none';
+  }
+  localStorage.setItem('theme', theme);
+}
+
+function initTheme() {
+  setTheme(localStorage.getItem('theme') === 'dark' ? 'dark' : 'light');
+  if (!themeToggle) return;
+  themeToggle.addEventListener('click', () => {
+    setTheme(html.classList.contains('dark-mode') ? 'light' : 'dark');
+  });
+}
+
+function initMenu() {
+  if (!menuToggle || !mobileNav) return;
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuToggle.classList.toggle('active');
+    mobileNav.classList.toggle('hidden');
+  });
+  mobileNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      mobileNav.classList.add('hidden');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!mobileNav.contains(e.target) && !menuToggle.contains(e.target) && !mobileNav.classList.contains('hidden')) {
+      menuToggle.classList.remove('active');
+      mobileNav.classList.add('hidden');
     }
-    
-    // Save to localStorage
-    localStorage.setItem('theme', theme);
+  });
 }
 
-// Initialize theme from localStorage (backup for icons)
-const savedTheme = localStorage.getItem('theme') || 'light';
-setTheme(savedTheme);
-
-// Theme toggle button click
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const isDark = body.classList.contains('dark-mode') || html.classList.contains('dark-mode');
-        setTheme(isDark ? 'light' : 'dark');
+function initSmoothScroll() {
+  document.querySelectorAll('#main-nav a[href^="#"], #mobile-nav a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      const target = targetId ? document.querySelector(targetId) : null;
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  });
 }
 
-// ============================================
-// HAMBURGER MENU
-// ============================================
-if (menuToggle && nav) {
-    // Toggle menu
-    menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        menuToggle.classList.toggle('active');
-        nav.classList.toggle('active');
+function initScrollEffects() {
+  const animated = document.querySelectorAll('.reveal, .project-card');
+  if (!animated.length) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${Math.min(idx * 80, 400)}ms`;
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.15, rootMargin: '0px 0px -12% 0px' });
+  animated.forEach((el) => observer.observe(el));
 
-    // Close menu when clicking a link
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            nav.classList.remove('active');
-        });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
-            menuToggle.classList.remove('active');
-            nav.classList.remove('active');
-        }
-    });
+  window.addEventListener('scroll', () => {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
 }
 
-// ============================================
-// SMOOTH SCROLLING
-// ============================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const target = document.querySelector(targetId);
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+function initScrollSpy() {
+  const links = Array.from(document.querySelectorAll('#main-nav a[href^="#"], #mobile-nav a[href^="#"]'));
+  const sections = links.map((l) => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  if (!sections.length) return;
 
-// ============================================
-// MOBILE MENU AUTO-CLOSE ON RESIZE
-// ============================================
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && nav && nav.classList.contains('active')) {
-        menuToggle.classList.remove('active');
-        nav.classList.remove('active');
+  const activate = (id) => {
+    links.forEach((l) => {
+      const on = l.getAttribute('href') === `#${id}`;
+      l.classList.toggle('active', on);
+      if (on) l.setAttribute('aria-current', 'page');
+      else l.removeAttribute('aria-current');
+    });
+  };
+
+  const spy = new IntersectionObserver((entries) => {
+    const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    if (visible[0]) activate(visible[0].target.id);
+  }, { threshold: [0.2, 0.4, 0.6], rootMargin: '-20% 0px -45% 0px' });
+
+  sections.forEach((section) => spy.observe(section));
+  activate(sections[0].id);
+}
+
+function initResizeClose() {
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      menuToggle?.classList.remove('active');
+      mobileNav?.classList.add('hidden');
     }
-});
+  });
+}
 
-console.log('✅ Portfolio JS loaded');
+if (typedTextElement) setTimeout(typeEffect, 900);
+initTheme();
+initMenu();
+initSmoothScroll();
+initScrollEffects();
+initScrollSpy();
+initResizeClose();
