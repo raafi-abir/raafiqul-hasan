@@ -83,3 +83,67 @@ h2{font-family:'JetBrains Mono',monospace;font-size:clamp(1.7rem,3vw,2.3rem);mar
   .main-content{grid-template-columns:1fr;gap:24px}
   .profile-image{width:150px;height:150px}
 }
+
+/* === Premium UX Enhancements === */
+html { scroll-behavior: smooth; }
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(circle at 20% 20%, rgba(59,130,246,.12), transparent 40%), radial-gradient(circle at 80% 0%, rgba(96,165,250,.1), transparent 35%);
+    animation: bgFloat 14s ease-in-out infinite alternate;
+}
+@keyframes bgFloat { from { transform: translateY(0px);} to { transform: translateY(-16px);} }
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: color-mix(in srgb, var(--bg-primary) 82%, transparent);
+    backdrop-filter: blur(10px);
+    border: 1px solid transparent;
+    border-radius: 14px;
+    padding: 16px;
+    transition: box-shadow .4s ease, border-color .4s ease, background-color .4s ease;
+}
+header.scrolled {
+    box-shadow: 0 16px 40px rgba(2, 6, 23, .2);
+    border-color: var(--border);
+}
+
+nav a.active, nav a[aria-current="page"] { color: var(--accent); }
+
+.main-content { gap: 56px; }
+.content h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: .2px; }
+.content p, .bio, li { line-height: 1.75; }
+.glass-card { transition: transform .4s ease, box-shadow .45s ease, border-color .35s ease, filter .45s ease; }
+.glass-card:hover { filter: saturate(1.05); }
+
+/* project/skills premium cards */
+.research-item, .resume-item, .info-card, .skill-tag {
+    box-shadow: 0 10px 24px rgba(15,23,42,.12);
+}
+.skill-tag { padding: 8px 14px; border-radius: 999px; }
+
+/* viewport animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(6px);
+    transition: opacity .6s ease, transform .6s ease, filter .6s ease;
+}
+.reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+.cards-grid .glass-card { transition-delay: var(--stagger, 0ms); }
+
+@media (max-width: 768px) {
+    header { border-radius: 0; padding: 12px; }
+    .main-content { gap: 26px; }
+}
