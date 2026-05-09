@@ -7,11 +7,13 @@
     <script src="/js/theme-init.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{zinc:{950:"#09090b"}}}}}</script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <header class="site-header" id="top">
-        <div class="header-inner">
+<body class="bg-zinc-950 text-zinc-100 antialiased">
+    <header class="site-header sticky top-0 w-full backdrop-blur-xl bg-zinc-900/60 border-b border-white/10" id="top">
+        <div class="header-inner max-w-6xl mx-auto px-6 py-4">
             <div class="logo-area">
                 <h1>Raafiqul Hasan</h1>
                 <p class="subtitle">Electrical and Electronics Engineering Student</p>
@@ -25,7 +27,7 @@
                     <span></span><span></span><span></span>
                 </button>
             </div>
-            <nav id="main-nav">
+            <nav id="main-nav" class="transition-all duration-300">
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -37,7 +39,8 @@
         </div>
     </header>
 
-    <main class="theme-wrapper onepage">
+    <!-- Resolved: one-page anchor navigation source of truth -->
+    <main class="theme-wrapper onepage max-w-6xl mx-auto px-6">
         <section id="home" class="content-section">
             <div class="main-content">
                 <aside class="sidebar glass-card reveal">
@@ -65,22 +68,56 @@
 
         <section id="projects" class="content-section reveal">
             <h2><i class="fas fa-code"></i> Projects</h2>
-            <div class="cards-grid project-grid">
-                <div class="info-card glass-card project-card"><h4>Analysis of Rectifying and Zener Diode Characteristics</h4><p>Laboratory project investigating I-V characteristics and applications of different diode types in rectification and voltage regulation.</p></div>
-                <div class="info-card glass-card project-card"><h4>Mathematical Modeling using Laplace Transform</h4><p>Applied Laplace Transform techniques to solve differential equations in circuit analysis and system dynamics.</p></div>
-                <div class="info-card glass-card project-card"><h4>Linux System Optimization and Configuration Experiments</h4><p>Exploring system performance tuning, kernel parameters, and customization for optimized computing environments.</p></div>
+            <div class="project-grid">
+                <article class="glass-card project-card reveal rounded-2xl border border-white/10 bg-zinc-900/60 shadow-lg shadow-black/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-blue-500/20">
+                    <p class="project-kicker">Case Study 01</p>
+                    <h3>Analysis of Rectifying and Zener Diode Characteristics</h3>
+                    <p><strong>Problem:</strong> Laboratory project investigating I-V characteristics and applications of different diode types in rectification and voltage regulation.</p>
+                    <p><strong>Solution:</strong> Analysis of measured response curves to compare behavior and practical voltage-control use cases.</p>
+                    <div class="badge-row"><span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700">Semiconductor Devices</span><span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700">Circuit Analysis</span><span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700">Lab Work</span></div>
+                </article>
+                <article class="glass-card project-card reveal rounded-2xl border border-white/10 bg-zinc-900/60 shadow-lg shadow-black/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-blue-500/20">
+                    <p class="project-kicker">Case Study 02</p>
+                    <h3>Mathematical Modeling using Laplace Transform</h3>
+                    <p><strong>Problem:</strong> Applied Laplace Transform techniques to solve differential equations in circuit analysis and system dynamics.</p>
+                    <p><strong>Solution:</strong> Structured transform-based modeling workflow for solving and interpreting time-domain engineering problems.</p>
+                    <div class="badge-row"><span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700">Laplace Transform</span><span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700">Mathematical Modeling</span><span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700">System Dynamics</span></div>
+                </article>
+                <article class="glass-card project-card reveal rounded-2xl border border-white/10 bg-zinc-900/60 shadow-lg shadow-black/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-blue-500/20">
+                    <p class="project-kicker">Case Study 03</p>
+                    <h3>Linux System Optimization and Configuration Experiments</h3>
+                    <p><strong>Problem:</strong> Exploring system performance tuning, kernel parameters, and customization for optimized computing environments.</p>
+                    <p><strong>Solution:</strong> Iterative configuration experiments to improve responsiveness and maintain stable daily performance.</p>
+                    <div class="badge-row"><span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700">Linux</span><span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700">System Configuration</span><span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700">Performance Tuning</span></div>
+                </article>
             </div>
         </section>
 
         <section id="skills" class="content-section reveal">
             <h2><i class="fas fa-bolt"></i> Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-tag"><i class="fab fa-c"></i> C (beginner)</span>
-                <span class="skill-tag"><i class="fab fa-python"></i> Python (beginner)</span>
-                <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
-                <span class="skill-tag"><i class="fas fa-microchip"></i> Circuit Analysis</span>
-                <span class="skill-tag"><i class="fas fa-square-root-alt"></i> Mathematical Modeling</span>
-                <span class="skill-tag"><i class="fas fa-bolt"></i> Semiconductor Devices</span>
+            <div class="skills-groups">
+                <article class="glass-card skill-group reveal rounded-2xl border border-white/10 bg-zinc-900/50">
+                    <h3>Electrical Engineering</h3>
+                    <div class="badge-row">
+                        <span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700"><i class="fas fa-microchip"></i> Circuit Analysis</span>
+                        <span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700"><i class="fas fa-bolt"></i> Semiconductor Devices</span>
+                        <span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700"><i class="fas fa-square-root-alt"></i> Mathematical Modeling</span>
+                    </div>
+                </article>
+                <article class="glass-card skill-group reveal rounded-2xl border border-white/10 bg-zinc-900/50">
+                    <h3>Programming</h3>
+                    <div class="badge-row">
+                        <span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700"><i class="fab fa-c"></i> C (beginner)</span>
+                        <span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700"><i class="fab fa-python"></i> Python (beginner)</span>
+                    </div>
+                </article>
+                <article class="glass-card skill-group reveal rounded-2xl border border-white/10 bg-zinc-900/50">
+                    <h3>Tools</h3>
+                    <div class="badge-row">
+                        <span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="skill-tag inline-flex items-center rounded-full px-3 py-1 text-sm bg-zinc-800/80 border border-zinc-700"><i class="fas fa-sliders-h"></i> System Configuration</span>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -88,9 +125,9 @@
             <h2><i class="fas fa-envelope"></i> Contact</h2>
             <footer>
                 <div class="contact-links">
-                    <a href="mailto:raafiqulhasan756@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> Email</a>
-                    <a href="https://github.com/StarX-404" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="https://www.linkedin.com/in/raafiqul-hasan" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:raafiqulhasan756@gmail.com" class="contact-link inline-flex items-center gap-2 rounded-xl px-4 py-2 bg-zinc-800/70 hover:bg-zinc-700/80 transition-all duration-300"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://github.com/StarX-404" target="_blank" rel="noopener noreferrer" class="contact-link inline-flex items-center gap-2 rounded-xl px-4 py-2 bg-zinc-800/70 hover:bg-zinc-700/80 transition-all duration-300"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/raafiqul-hasan" target="_blank" rel="noopener noreferrer" class="contact-link inline-flex items-center gap-2 rounded-xl px-4 py-2 bg-zinc-800/70 hover:bg-zinc-700/80 transition-all duration-300"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 </div>
                 <p>University of Asia Pacific, Dhaka</p>
                 <p class="copyright">© 2024 by Raafiqul Hasan</p>

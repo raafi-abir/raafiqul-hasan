@@ -1,3 +1,4 @@
+// Resolved: one-page interaction source of truth
 const themeToggle = document.getElementById('theme-toggle');
 const menuToggle = document.getElementById('menu-toggle');
 const nav = document.getElementById('main-nav');
