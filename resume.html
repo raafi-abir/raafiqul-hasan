@@ -16,8 +16,8 @@
 </head>
 <body>
     <div class="theme-wrapper">
-        <header>
-            <div class="header-container">
+        <header class="site-header" id="top">
+            <div class="header-inner">
                 <div class="logo-area">
                     <h1>Raafiqul Hasan</h1>
                     <p class="subtitle">Electrical and Electronics Engineering Student</p>
@@ -41,6 +41,15 @@
                     <li><a href="/personal">Personal</a></li>
                 </ul>
             </nav>
+            <div id="mobile-nav" class="mobile-nav-panel is-hidden">
+                <ul class="mobile-nav-list">
+                    <li><a href="/resume" class="active">Resume</a></li>
+                    <li><a href="/research">Research</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/outreach">Outreach</a></li>
+                    <li><a href="/personal">Personal</a></li>
+                </ul>
+            </div>
         </header>
 
         <div class="main-content">
@@ -91,7 +100,7 @@
                 <div class="resume-section">
                     <h3><i class="fas fa-code"></i> Skills</h3>
                     <div class="skills-grid">
-                        <span class="skill-tag"><i class="fab fa-c"></i> C (beginner)</span>
+                        <span class="skill-tag"><i class="fas fa-code"></i> C (beginner)</span>
                         <span class="skill-tag"><i class="fab fa-python"></i> Python (beginner)</span>
                         <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
                         <span class="skill-tag"><i class="fas fa-microchip"></i> Circuit Analysis</span>
@@ -109,7 +118,7 @@
                 <a href="https://www.linkedin.com/in/raafiqul-hasan" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
             <p>University of Asia Pacific, Dhaka</p>
-            <p class="copyright">© 2024 by Raafiqul Hasan</p>
+            <p class="copyright">© <span class="current-year"></span> by Raafiqul Hasan</p>
         </footer>
     </div>
     <script src="/js/main.js"></script>

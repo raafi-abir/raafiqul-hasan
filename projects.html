@@ -14,8 +14,8 @@
 </head>
 <body>
     <div class="theme-wrapper">
-        <header>
-            <div class="header-container">
+        <header class="site-header" id="top">
+            <div class="header-inner">
                 <div class="logo-area">
                     <h1>Raafiqul Hasan</h1>
                     <p class="subtitle">Electrical and Electronics Engineering Student</p>
@@ -39,6 +39,15 @@
                     <li><a href="/personal">Personal</a></li>
                 </ul>
             </nav>
+            <div id="mobile-nav" class="mobile-nav-panel is-hidden">
+                <ul class="mobile-nav-list">
+                    <li><a href="/resume">Resume</a></li>
+                    <li><a href="/research">Research</a></li>
+                    <li><a href="/projects" class="active">Projects</a></li>
+                    <li><a href="/outreach">Outreach</a></li>
+                    <li><a href="/personal">Personal</a></li>
+                </ul>
+            </div>
         </header>
 
         <div class="main-content">
@@ -50,18 +59,30 @@
                 <p class="bio">I'm an Electrical and Electronics Engineering (EEE) student at the University of Asia Pacific, Dhaka.</p>
             </aside>
 
-            <section class="content incoming-page">
-                <div class="incoming-message-box">
-                    <h1 class="incoming-large">
-                        <span class="incoming-word">INCOMING</span>
-                        <span class="incoming-exclamation">!!!</span>
-                    </h1>
-                    <div class="incoming-decoration">
-                        <i class="fas fa-code"></i>
-                        <i class="fas fa-microchip"></i>
-                        <i class="fab fa-linux"></i>
-                    </div>
-                    <p class="incoming-small">Project details coming soon</p>
+            <section class="content">
+                <h2><i class="fas fa-code"></i> Projects</h2>
+                <div class="project-grid">
+                    <article class="glass-card project-card reveal">
+                        <p class="project-kicker">Case Study 01</p>
+                        <h3>Analysis of Rectifying and Zener Diode Characteristics</h3>
+                        <p><strong>Problem:</strong> Laboratory project investigating I-V characteristics and applications of different diode types in rectification and voltage regulation.</p>
+                        <p><strong>Solution:</strong> Analysis of measured response curves to compare behavior and practical voltage-control use cases.</p>
+                        <div class="badge-row"><span class="skill-tag">Semiconductor Devices</span><span class="skill-tag">Circuit Analysis</span><span class="skill-tag">Lab Work</span></div>
+                    </article>
+                    <article class="glass-card project-card reveal">
+                        <p class="project-kicker">Case Study 02</p>
+                        <h3>Mathematical Modeling using Laplace Transform</h3>
+                        <p><strong>Problem:</strong> Applied Laplace Transform techniques to solve differential equations in circuit analysis and system dynamics.</p>
+                        <p><strong>Solution:</strong> Structured transform-based modeling workflow for solving and interpreting time-domain engineering problems.</p>
+                        <div class="badge-row"><span class="skill-tag">Laplace Transform</span><span class="skill-tag">Mathematical Modeling</span><span class="skill-tag">System Dynamics</span></div>
+                    </article>
+                    <article class="glass-card project-card reveal">
+                        <p class="project-kicker">Case Study 03</p>
+                        <h3>Linux System Optimization and Configuration Experiments</h3>
+                        <p><strong>Problem:</strong> Exploring system performance tuning, kernel parameters, and customization for optimized computing environments.</p>
+                        <p><strong>Solution:</strong> Iterative configuration experiments to improve responsiveness and maintain stable daily performance.</p>
+                        <div class="badge-row"><span class="skill-tag">Linux</span><span class="skill-tag">System Configuration</span><span class="skill-tag">Performance Tuning</span></div>
+                    </article>
                 </div>
             </section>
         </div>
@@ -73,7 +94,7 @@
                 <a href="https://www.linkedin.com/in/raafiqul-hasan" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
             <p>University of Asia Pacific, Dhaka</p>
-            <p class="copyright">© 2024 by Raafiqul Hasan</p>
+            <p class="copyright">© <span class="current-year"></span> by Raafiqul Hasan</p>
         </footer>
     </div>
     <script src="/js/main.js"></script>

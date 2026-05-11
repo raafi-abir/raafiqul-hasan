@@ -61,22 +61,30 @@ function initTheme() {
 }
 
 function initMenu() {
-  if (!menuToggle || !mobileNav) return;
+  if (!menuToggle) return;
   menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     menuToggle.classList.toggle('active');
-    mobileNav.classList.toggle('hidden');
+    if (mobileNav) mobileNav.classList.toggle('is-hidden');
+    else nav?.classList.toggle('active');
   });
-  mobileNav.querySelectorAll('a').forEach((link) => {
+  const menuLinks = mobileNav
+    ? mobileNav.querySelectorAll('a')
+    : nav?.querySelectorAll('a') || [];
+  menuLinks.forEach((link) => {
     link.addEventListener('click', () => {
       menuToggle.classList.remove('active');
-      mobileNav.classList.add('hidden');
+      if (mobileNav) mobileNav.classList.add('is-hidden');
+      else nav?.classList.remove('active');
     });
   });
   document.addEventListener('click', (e) => {
-    if (!mobileNav.contains(e.target) && !menuToggle.contains(e.target) && !mobileNav.classList.contains('hidden')) {
+    const menuOpen = mobileNav ? !mobileNav.classList.contains('is-hidden') : nav?.classList.contains('active');
+    const clickedInsideMenu = mobileNav ? mobileNav.contains(e.target) : nav?.contains(e.target);
+    if (!clickedInsideMenu && !menuToggle.contains(e.target) && menuOpen) {
       menuToggle.classList.remove('active');
-      mobileNav.classList.add('hidden');
+      if (mobileNav) mobileNav.classList.add('is-hidden');
+      else nav?.classList.remove('active');
     }
   });
 }
@@ -139,8 +147,15 @@ function initResizeClose() {
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
       menuToggle?.classList.remove('active');
-      mobileNav?.classList.add('hidden');
+      mobileNav?.classList.add('is-hidden');
     }
+  });
+}
+
+function initDynamicYear() {
+  const year = String(new Date().getFullYear());
+  document.querySelectorAll('.current-year').forEach((el) => {
+    el.textContent = year;
   });
 }
 
@@ -151,3 +166,4 @@ initSmoothScroll();
 initScrollEffects();
 initScrollSpy();
 initResizeClose();
+initDynamicYear();
