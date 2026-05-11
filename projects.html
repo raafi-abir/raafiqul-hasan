@@ -15,7 +15,7 @@
 <body>
     <div class="theme-wrapper">
         <header class="site-header" id="top">
-            <div class="header-inner relative max-w-6xl mx-auto px-6 py-4">
+            <div class="header-inner">
                 <div class="logo-area">
                     <h1>Raafiqul Hasan</h1>
                     <p class="subtitle">Electrical and Electronics Engineering Student</p>
@@ -39,8 +39,8 @@
                     <li><a href="/personal">Personal</a></li>
                 </ul>
             </nav>
-            <div id="mobile-nav" class="hidden md:hidden absolute right-4 top-full mt-2 w-[min(88vw,340px)] rounded-2xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl p-5">
-                <ul class="flex flex-col gap-4">
+            <div id="mobile-nav" class="mobile-nav-panel is-hidden">
+                <ul class="mobile-nav-list">
                     <li><a href="/resume">Resume</a></li>
                     <li><a href="/research">Research</a></li>
                     <li><a href="/projects" class="active">Projects</a></li>
@@ -67,18 +67,21 @@
                         <h3>Analysis of Rectifying and Zener Diode Characteristics</h3>
                         <p><strong>Problem:</strong> Laboratory project investigating I-V characteristics and applications of different diode types in rectification and voltage regulation.</p>
                         <p><strong>Solution:</strong> Analysis of measured response curves to compare behavior and practical voltage-control use cases.</p>
+                        <div class="badge-row"><span class="skill-tag">Semiconductor Devices</span><span class="skill-tag">Circuit Analysis</span><span class="skill-tag">Lab Work</span></div>
                     </article>
                     <article class="glass-card project-card reveal">
                         <p class="project-kicker">Case Study 02</p>
                         <h3>Mathematical Modeling using Laplace Transform</h3>
                         <p><strong>Problem:</strong> Applied Laplace Transform techniques to solve differential equations in circuit analysis and system dynamics.</p>
                         <p><strong>Solution:</strong> Structured transform-based modeling workflow for solving and interpreting time-domain engineering problems.</p>
+                        <div class="badge-row"><span class="skill-tag">Laplace Transform</span><span class="skill-tag">Mathematical Modeling</span><span class="skill-tag">System Dynamics</span></div>
                     </article>
                     <article class="glass-card project-card reveal">
                         <p class="project-kicker">Case Study 03</p>
                         <h3>Linux System Optimization and Configuration Experiments</h3>
                         <p><strong>Problem:</strong> Exploring system performance tuning, kernel parameters, and customization for optimized computing environments.</p>
                         <p><strong>Solution:</strong> Iterative configuration experiments to improve responsiveness and maintain stable daily performance.</p>
+                        <div class="badge-row"><span class="skill-tag">Linux</span><span class="skill-tag">System Configuration</span><span class="skill-tag">Performance Tuning</span></div>
                     </article>
                 </div>
             </section>
@@ -91,7 +94,7 @@
                 <a href="https://www.linkedin.com/in/raafiqul-hasan" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
             <p>University of Asia Pacific, Dhaka</p>
-            <p class="copyright">© 2024 by Raafiqul Hasan</p>
+            <p class="copyright">© <span class="current-year"></span> by Raafiqul Hasan</p>
         </footer>
     </div>
     <script src="/js/main.js"></script>

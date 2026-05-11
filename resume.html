@@ -17,7 +17,7 @@
 <body>
     <div class="theme-wrapper">
         <header class="site-header" id="top">
-            <div class="header-inner relative max-w-6xl mx-auto px-6 py-4">
+            <div class="header-inner">
                 <div class="logo-area">
                     <h1>Raafiqul Hasan</h1>
                     <p class="subtitle">Electrical and Electronics Engineering Student</p>
@@ -41,8 +41,8 @@
                     <li><a href="/personal">Personal</a></li>
                 </ul>
             </nav>
-            <div id="mobile-nav" class="hidden md:hidden absolute right-4 top-full mt-2 w-[min(88vw,340px)] rounded-2xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl p-5">
-                <ul class="flex flex-col gap-4">
+            <div id="mobile-nav" class="mobile-nav-panel is-hidden">
+                <ul class="mobile-nav-list">
                     <li><a href="/resume" class="active">Resume</a></li>
                     <li><a href="/research">Research</a></li>
                     <li><a href="/projects">Projects</a></li>
@@ -118,7 +118,7 @@
                 <a href="https://www.linkedin.com/in/raafiqul-hasan" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
             <p>University of Asia Pacific, Dhaka</p>
-            <p class="copyright">© 2024 by Raafiqul Hasan</p>
+            <p class="copyright">© <span class="current-year"></span> by Raafiqul Hasan</p>
         </footer>
     </div>
     <script src="/js/main.js"></script>
