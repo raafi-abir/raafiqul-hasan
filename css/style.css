@@ -116,7 +116,10 @@ body.light-mode, html[data-theme="light"] body { background:#ffffff; color:#0f17
 body.dark-mode, html[data-theme="dark"] body { background:#0f0f10; color:#e5e7eb; }
 .site-header { background: color-mix(in srgb, var(--bg-secondary) 72%, transparent); border-bottom:1px solid var(--border); }
 .section-divider { border-top: 1px solid var(--border); margin-top: 24px; }
-.content-section + .content-section { border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent); }
+.content-section + .content-section { border-top: 1px solid var(--border); }
+@supports (color: color-mix(in srgb, black 50%, white)) {
+  .content-section + .content-section { border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent); }
+}
 
 .project-card p { line-height: 1.75; }
 .skill-group h3, .project-card h3 { letter-spacing:.2px; }

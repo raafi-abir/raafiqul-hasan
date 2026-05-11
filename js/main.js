@@ -61,22 +61,30 @@ function initTheme() {
 }
 
 function initMenu() {
-  if (!menuToggle || !mobileNav) return;
+  if (!menuToggle) return;
   menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     menuToggle.classList.toggle('active');
-    mobileNav.classList.toggle('hidden');
+    if (mobileNav) mobileNav.classList.toggle('hidden');
+    else nav?.classList.toggle('active');
   });
-  mobileNav.querySelectorAll('a').forEach((link) => {
+  const menuLinks = mobileNav
+    ? mobileNav.querySelectorAll('a')
+    : nav?.querySelectorAll('a') || [];
+  menuLinks.forEach((link) => {
     link.addEventListener('click', () => {
       menuToggle.classList.remove('active');
-      mobileNav.classList.add('hidden');
+      if (mobileNav) mobileNav.classList.add('hidden');
+      else nav?.classList.remove('active');
     });
   });
   document.addEventListener('click', (e) => {
-    if (!mobileNav.contains(e.target) && !menuToggle.contains(e.target) && !mobileNav.classList.contains('hidden')) {
+    const menuOpen = mobileNav ? !mobileNav.classList.contains('hidden') : nav?.classList.contains('active');
+    const clickedInsideMenu = mobileNav ? mobileNav.contains(e.target) : nav?.contains(e.target);
+    if (!clickedInsideMenu && !menuToggle.contains(e.target) && menuOpen) {
       menuToggle.classList.remove('active');
-      mobileNav.classList.add('hidden');
+      if (mobileNav) mobileNav.classList.add('hidden');
+      else nav?.classList.remove('active');
     }
   });
 }

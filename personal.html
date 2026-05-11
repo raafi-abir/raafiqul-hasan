@@ -14,8 +14,8 @@
 </head>
 <body>
     <div class="theme-wrapper">
-        <header>
-            <div class="header-container">
+        <header class="site-header" id="top">
+            <div class="header-inner relative max-w-6xl mx-auto px-6 py-4">
                 <div class="logo-area">
                     <h1>Raafiqul Hasan</h1>
                     <p class="subtitle">Electrical and Electronics Engineering Student</p>
@@ -39,6 +39,15 @@
                     <li><a href="/personal" class="active" aria-current="page">Personal</a></li>
                 </ul>
             </nav>
+            <div id="mobile-nav" class="hidden md:hidden absolute right-4 top-full mt-2 w-[min(88vw,340px)] rounded-2xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl p-5">
+                <ul class="flex flex-col gap-4">
+                    <li><a href="/resume">Resume</a></li>
+                    <li><a href="/research">Research</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/outreach">Outreach</a></li>
+                    <li><a href="/personal" class="active">Personal</a></li>
+                </ul>
+            </div>
         </header>
 
         <div class="main-content">
